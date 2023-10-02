@@ -1,3 +1,3 @@
-# Northcoders News API
+# instructions
 
-For instructions, please head over to [L2C NC News](https://l2c.northcoders.com/courses/be/nc-news).
+Please create files <.env.development> and <.env.test> to ensure functional database.
