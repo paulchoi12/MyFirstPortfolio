@@ -30,7 +30,7 @@ describe("app!!", ()=>{
                 slug: 'paper'
               }]
             
-              console.log(response.body)
+              
               const {topic} = response.body
               const input = response.body.topics
             expect(input).toEqual(output)
