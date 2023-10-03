@@ -1,9 +1,8 @@
 const { getAllTopics } = require("../models/topic.model")
 
-exports.controller = (req, res) =>{
+exports.getAllTopics = (req, res) =>{
     
-    const query = req.query
-    return getAllTopics(query)
+    return getAllTopics()
     .then((topics)=>{
         res.status(200).send({topics})
     })

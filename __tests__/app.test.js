@@ -17,8 +17,24 @@ describe("app!!", ()=>{
         .get('/api/topics')
         .expect(200)
         .then((response)=>{
-            const {topic} = response.body
-            return response.body
+            const output = [{
+                description: 'The man, the Mitch, the legend',
+                slug: 'mitch'
+              },
+              {
+                description: 'Not dogs',
+                slug: 'cats'
+              },
+              {
+                description: 'what books are made of',
+                slug: 'paper'
+              }]
+            
+              console.log(response.body)
+              const {topic} = response.body
+              const input = response.body.topics
+            expect(input).toEqual(output)
+
         })
     })
 })

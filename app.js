@@ -1,10 +1,10 @@
 const express = require('express')
-const {controller}= require("./controllers/topic.controllers")
-const { handle404Errors, handle500Errors } = require('./controllers/err.controler')
+const {getAllTopics}= require("./controllers/topic.controllers")
+const {handle500Errors } = require('./controllers/errhandlers')
 const app = express()
 
 
-app.get('/api/topics', controller)
+app.get('/api/topics', getAllTopics)
 
 //not found
 app.all('/*', (req, res, next)=>{

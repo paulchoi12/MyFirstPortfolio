@@ -1,7 +1,7 @@
 // the database has to be from the connection
 const db = require("../db/connection")
 
-exports.getAllTopics = (queryFromURL) => {
+exports.getAllTopics = () => {
     
   return db.query(`
     SELECT slug,
