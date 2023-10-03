@@ -18,7 +18,7 @@ describe("app!!", ()=>{
         .expect(200)
         .then((response)=>{
             const {topic} = response.body
-            console.log(topic)
+            return response.body
         })
     })
 })
