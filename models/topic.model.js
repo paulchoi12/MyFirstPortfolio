@@ -7,7 +7,6 @@ exports.getAllTopics = (queryFromURL) => {
     SELECT slug,
     description FROM topics;`)
     .then((result)=>{
-        console.log(result.rows, 'MODEL')
         return result.rows
     })
 }
