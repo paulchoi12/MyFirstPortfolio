@@ -3,6 +3,7 @@ const query = require("supertest")
 const seed = require("../db/seeds/seed")
 const db = require('../db/connection');
 const data = require('../db/data/test-data/index')
+const endPointsObj = require('../endpoints.json')
 
 beforeEach(()=>{
    return seed(data);
@@ -29,12 +30,20 @@ describe("app!!", ()=>{
                 description: 'what books are made of',
                 slug: 'paper'
               }]
-            
-              console.log(response.body)
               const {topic} = response.body
               const input = response.body.topics
             expect(input).toEqual(output)
 
         })
+    })
+    test('should return all the available endPoints', ()=>{
+        
+        return query(app)
+        .get('/api')
+        .expect(200)
+        .then((response)=>{
+            expect(response.body).toEqual(endPointsObj)
+        })
+
     })
 })
