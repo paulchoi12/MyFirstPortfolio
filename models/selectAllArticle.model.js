@@ -1,16 +1,13 @@
 const db = require("../db/connection")
 
 exports.selectAllArticle = () =>{
-    const countedTable = db.query(`
-    SELECT article_id, COUNT(*) FROM comments
-    GROUP BY article_id
-    `)
 
     return db.query(`
-    SELECT article_id, COUNT(*) FROM comments
-    GROUP BY article_id 
-    JOIN articles ON article.article_id = comments.article_id
-
+    SELECT comments.article_id, COUNT(*) AS comment_count
+    FROM comments 
+    LEFT JOIN articles
+    ON comments.article_id = articles.article_id
+    GROUP BY comments.article_id
    `)
     .then((result)=>{
         console.log(result.rows)
