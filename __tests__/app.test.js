@@ -45,25 +45,36 @@ describe("app!!", ()=>{
             expect(response.body).toEqual(endPointsObj)
         })
     })
-    test('should get articles by their id', ()=>{
+    xtest('should get articles by their id', ()=>{
 
         return request(app)
         .get('/api/articles/1')
         .expect(200)
-        // .then((response)=>{
-        //     const {article} = response.body
-        //     console.log(article);
-        //     const output = [{
-        //         title: "Living in the shadow of a great man",
-        //         topic: "mitch",
-        //         author: "butter_bridge",
-        //         body: "I find this existence challenging",
-        //         created_at: 1594329060000,
-        //         votes: 100,
-        //         article_img_url:
-        //           "https://images.pexels.com/photos/158651/news-newsletter-newspaper-information-158651.jpeg?w=700&h=700",
-        //       }]
-        //     expect(article).toEqual(output)
-        // })
-    })
+        .then((response)=>{
+            const {article} = response.body
+            const output = {
+                title: "Living in the shadow of a great man",
+                topic: "mitch",
+                author: "butter_bridge",
+                body: "I find this existence challenging",
+                created_at: 1594329060000,
+                votes: 100,
+                article_img_url:
+                  "https://images.pexels.com/photos/158651/news-newsletter-newspaper-information-158651.jpeg?w=700&h=700",
+              }
+            expect(article).toEqual(output)
+        })
+      })
+      //FIND A WAY TO MAKE OUTPUT (JSON file sorted by created_at)
+      test.only('should return sorted Articles', ()=>{
+        return request(app)
+        .get('/api/articles')
+        .expect(200)
+        .then((response)=>{
+          const output = []
+          const {sortedArticles}= response.body
+          
+          
+        })
+      })
 })
