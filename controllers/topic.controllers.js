@@ -1,5 +1,8 @@
 const { getAllTopics } = require("../models/topic.model")
 
+
+
+//task 2
 exports.getAllTopics = (req, res) =>{
     
     return getAllTopics()

@@ -1,4 +1,7 @@
 // the database has to be from the connection
+
+
+//task 2
 const db = require("../db/connection")
 
 exports.getAllTopics = () => {

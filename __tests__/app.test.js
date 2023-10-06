@@ -5,6 +5,7 @@ const db = require('../db/connection');
 const data = require('../db/data/test-data/index')
 const endPointsObj = require('../endpoints.json')
 
+
 beforeEach(()=>{
    return seed(data);
 })
@@ -30,7 +31,6 @@ describe("app!!", ()=>{
                 description: 'what books are made of',
                 slug: 'paper'
               }]
-            //   const {topic} = response.body
               const input = response.body.topics
             expect(input).toEqual(output)
 
@@ -45,25 +45,29 @@ describe("app!!", ()=>{
             expect(response.body).toEqual(endPointsObj)
         })
     })
+    //task 4
     test('should get articles by their id', ()=>{
 
         return request(app)
         .get('/api/articles/1')
         .expect(200)
-        // .then((response)=>{
-        //     const {article} = response.body
-        //     console.log(article);
-        //     const output = [{
-        //         title: "Living in the shadow of a great man",
-        //         topic: "mitch",
-        //         author: "butter_bridge",
-        //         body: "I find this existence challenging",
-        //         created_at: 1594329060000,
-        //         votes: 100,
-        //         article_img_url:
-        //           "https://images.pexels.com/photos/158651/news-newsletter-newspaper-information-158651.jpeg?w=700&h=700",
-        //       }]
-        //     expect(article).toEqual(output)
-        // })
-    })
+        .then((response)=>{
+            const {article} = response.body
+            expect(article.article_id).toBe(1)
+        })
+      })
+      //task5
+      test('should return sorted Articles', ()=>{
+        return request(app)
+        .get('/api/articles')
+        .expect(200)
+        .then((response)=>{
+          const {sortedArticles}= response.body
+          const sortedArticlesKeys = Object.keys(sortedArticles[0])
+          expect(sortedArticlesKeys).toEqual(expect.arrayContaining(['article_id', 'comment_count']))
+        })
+      })
+      
+      
+
 })

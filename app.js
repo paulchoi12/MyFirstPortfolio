@@ -3,12 +3,16 @@ const {getAllTopics}= require("./controllers/topic.controllers")
 const {handle500Errors } = require('./controllers/errhandlers')
 const {exportEndPoints} = require('./controllers/exportEndPoints')
 const { getArticleByID } = require('./controllers/articleByID.controller')
+const { articleAllSorted } = require('./controllers/articleAllSorted.controller')
 const app = express()
 
-
+// app.get
 app.get('/api/topics', getAllTopics)
 app.get('/api', exportEndPoints)
 app.get('/api/articles/:article_id', getArticleByID)
+app.get('/api/articles', articleAllSorted)
+
+
 
 
 //not found
