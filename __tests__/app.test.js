@@ -99,5 +99,13 @@ describe("app!!", ()=>{
             expect(response.body).toEqual({"message": "Article does not exist!"})
           })
         })
+        test('should return 400 err when route is wrong',()=>{
+          return request(app)
+          .get('/api/articles/katherine/comments')
+          .expect(400)
+          .then((response)=>{
+            expect(response.body).toEqual({"message": "invalid id!"})
+          })
+        })
       
 })

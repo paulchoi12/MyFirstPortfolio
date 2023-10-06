@@ -1,6 +1,6 @@
 const express = require('express')
 const {getAllTopics}= require("./controllers/topic.controllers")
-const {handle500Errors, handleCustomErrors } = require('./controllers/errhandlers')
+const {handle500Errors, handleCustomErrors, handle400errors } = require('./controllers/errhandlers')
 const {exportEndPoints} = require('./controllers/exportEndPoints')
 const { getArticleByID } = require('./controllers/articleByID.controller')
 const { articleAllSorted } = require('./controllers/articleAllSorted.controller')
@@ -23,6 +23,7 @@ app.all('/*', (req, res, next)=>{
 
 //error handling middleware
 app.use(handleCustomErrors);
+app.use(handle400errors)
 app.use(handle500Errors);
 
 module.exports = app
