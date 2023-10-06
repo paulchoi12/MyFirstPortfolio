@@ -67,7 +67,45 @@ describe("app!!", ()=>{
           expect(sortedArticlesKeys).toEqual(expect.arrayContaining(['article_id', 'comment_count']))
         })
       })
+      //            TASK 6
+        test('should return comments if there is any',()=>{
+          return request(app)
+          .get('/api/articles/1/comments')
+          .expect(200)
+          .then((response)=>{
+            const comments = response.body.comments
+            //dynamic expected needed (flexible test)
+            //iterate through the input comments with article_id1
+            for(let i =0; i< comments.length; i++){
+              expect(comments[i]).toHaveProperty('article_id', 1)
+            }
+          })
+        })
+        //does not console.log(err)
+        test('should return empty arr when input has no comments',()=>{
+          return request(app)
+          .get('/api/articles/4/comments')
+          .expect(200)
+          .then((response)=>{
+            expect(response.body.comments).toEqual([])
+          })
+        })
+        //check if the articles exist
+        test('should return err when input is wrong',()=>{
+          return request(app)
+          .get('/api/articles/123989/comments')
+          .expect(404)
+          .then((response)=>{
+            expect(response.body).toEqual({"message": "Article does not exist!"})
+          })
+        })
+        test('should return 400 err when route is wrong',()=>{
+          return request(app)
+          .get('/api/articles/katherine/comments')
+          .expect(400)
+          .then((response)=>{
+            expect(response.body).toEqual({"message": "invalid id!"})
+          })
+        })
       
-      
-
 })
