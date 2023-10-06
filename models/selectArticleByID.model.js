@@ -1,4 +1,5 @@
-//get database using connnection
+//task 4
+
 const db = require("../db/connection")
 
 exports.selectArticleByID=()=>{

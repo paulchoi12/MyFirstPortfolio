@@ -1,5 +1,6 @@
 const {selectArticleByID} = require("../models/selectArticleByID.model")
 
+//task 4
 exports.getArticleByID = (req, res) =>{
 
     const {article_id} = req.params;
