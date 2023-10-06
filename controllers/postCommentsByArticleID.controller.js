@@ -2,8 +2,9 @@ const { insertCommentsByArticleID } = require("../models/insertCommentsByArticle
 
 
 exports.postCommentsByArticleID=(req, res)=>{
-    console.log(req.body)
-    insertCommentsByArticleID(req.body)
+    const {article_id} = req.params
+    console.log()
+    insertCommentsByArticleID(article_id)
     .then((comment)=>{
         res.status(201).send(({comment}))
     })
