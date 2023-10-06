@@ -184,6 +184,13 @@ describe("app!!", ()=>{
           console.log(response.body)
         })
       })
-      
+      test('should return new comment inside the comment table',()=>{
+        return request(app)
+        .post('/api/articles/2/comments')
+        .expect(201)
+        .then((response)=>{
+          console.log(response.body)
+        })
+      })
 
 })

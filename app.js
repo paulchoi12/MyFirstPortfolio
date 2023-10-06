@@ -5,15 +5,18 @@ const {exportEndPoints} = require('./controllers/exportEndPoints')
 const { getArticleByID } = require('./controllers/articleByID.controller')
 const { articleAllSorted } = require('./controllers/articleAllSorted.controller')
 const { getAllComments } = require('./controllers/getAllComments.controller')
+const { postCommentsByArticleID } = require('./controllers/postCommentsByArticleID.controller')
 const app = express()
 
-
+// app.get
 app.get('/api/topics', getAllTopics)
 app.get('/api', exportEndPoints)
 app.get('/api/articles/:article_id', getArticleByID)
 app.get('/api/articles', articleAllSorted)
 app.get('/api/articles/:article_id/comments', getAllComments)
 
+//app.post
+app.post('/api/articles/:articles_id/comments', postCommentsByArticleID)
 
 //not found
 app.all('/*', (req, res, next)=>{
