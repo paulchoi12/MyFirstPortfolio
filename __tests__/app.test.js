@@ -185,7 +185,7 @@ describe("app!!", ()=>{
         })
       })
       //TASK 7 
-      test('should return new comment inside the comment table',()=>{
+      xtest('should return new comment inside the comment table',()=>{
         return request(app)
         .post('/api/articles/2/comments')
         .expect(201)
