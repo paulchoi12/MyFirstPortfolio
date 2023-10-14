@@ -107,5 +107,22 @@ describe("app!!", ()=>{
             expect(response.body).toEqual({"message": "invalid id!"})
           })
         })
+        //task 7
+        test.only('should be able to post comment on the selected article',()=>{
+          const data = {
+            username: "Mellmow",
+            body: "I approve this comment",
+          }
+          return request(app)
+          .post('/api/articles/1/comments')
+          .send(data)
+          .expect(201)
+          .then((response)=>{
+             console.log(response.body)
+          })
+         
+        })
+
+        
       
 })
