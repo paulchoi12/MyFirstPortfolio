@@ -7,11 +7,14 @@ const { postCommentsByID } = require("../models/postCommentByID");
 exports.postComments= (req ,res) =>{
     const {article_id} = req.params;
     console.log(article_id)
-    console.log(req)
-    res.status(201).send()
-    // postCommentsByID()
-    // .then((response)=>{
-    //     console.log(response)
-    // })
-   
+    console.log(' ')
+    
+    postCommentsByID(req.body)
+    .then((response)=>{
+        console.log(response)
+    })
+    .then((res)=>{
+        res.status(201).send(req.body)
+    })
+    
 }

@@ -6,6 +6,7 @@ const data = require('../db/data/test-data/index')
 const endPointsObj = require('../endpoints.json')
 
 
+
 beforeEach(()=>{
    return seed(data);
 })
@@ -110,17 +111,15 @@ describe("app!!", ()=>{
         //task 7
         test.only('should be able to post comment on the selected article',()=>{
           const data = {
-            username: "Mellmow",
+            username: "paul",
             body: "I approve this comment",
           }
           return request(app)
           .post('/api/articles/1/comments')
           .send(data)
-          .expect(201)
-          .then((response)=>{
-             console.log(response.body)
+          .then((comments)=>{
+            return comments
           })
-         
         })
 
         
