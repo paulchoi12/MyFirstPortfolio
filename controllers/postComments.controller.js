@@ -6,15 +6,13 @@ const { postCommentsByID } = require("../models/postCommentByID");
 //task 7
 exports.postComments= (req ,res) =>{
     const {article_id} = req.params;
-    console.log(article_id)
-    console.log(' ')
-    
-    postCommentsByID(req.body)
+    console.log(req.body)
+    postCommentsByID(req.body, article_id)
     .then((response)=>{
-        console.log(response)
-    })
-    .then((res)=>{
-        res.status(201).send(req.body)
+
+        res.status(201).send(response)
+    }) .catch((err)=>{
+        console.log(err)
     })
     
 }

@@ -8,7 +8,7 @@ const { getAllComments } = require('./controllers/getAllComments.controller')
 const { postComments } = require('./controllers/postComments.controller')
 
 const app = express()
-
+app.use(express.json())
 // app.get
 app.get('/api/topics', getAllTopics)
 app.get('/api', exportEndPoints)

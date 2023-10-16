@@ -1,11 +1,15 @@
+const db = require('../db/connection');
 
-exports.postCommentsByID=(data)=>{
-    
-    const {author, body} = data
+exports.postCommentsByID=(data, article_id)=>{
+
+    const {username, body} = data
     
     return db.query(`
-    INSERT INTO Comments (author, body) VALUES ($1, $2, $3) RETURNING *;
+    INSERT INTO Comments (author, body, article_id) VALUES ($1, $2, $3) RETURNING *;
     `,
-    [author, body])
-    .then(({rows})=>(rows[0]))
+    [username, body, article_id])
+    .then(({rows})=>{
+        return rows[0]
+    })
+   
 }
