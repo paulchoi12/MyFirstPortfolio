@@ -109,7 +109,7 @@ describe("app!!", ()=>{
           })
         })
         //task 7
-        test.only('should be able to post comment on the selected article',()=>{
+        test('should be able to post comment on the selected article',()=>{
           const data = {
             username: "butter_bridge",
             body: "I approve this comment",
@@ -123,6 +123,18 @@ describe("app!!", ()=>{
           expect(comments.body).toHaveProperty("body", "I approve this comment")
           expect(comments.body).toHaveProperty("votes", 0)
 
+          })
+        })
+        test.only('should be able to patch articles by id',()=>{
+          const data = {
+            inc_votes: 1
+          }
+          return request(app)
+          .patch('/api/articles/1')
+          .send(data)
+          .expect(201)
+          .then((articles)=>{
+           return articles.body
           })
         })
 })
