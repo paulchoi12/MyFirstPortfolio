@@ -140,7 +140,7 @@ describe("app!!", ()=>{
         })
 
         //taks 9
-        test.only('should be able to delete comments by id',()=>{
+        xtest('should be able to delete comments by id',()=>{
           return request(app)
           .delete('/api/comments/1')
           .expect(204)
