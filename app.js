@@ -7,6 +7,7 @@ const { articleAllSorted } = require('./controllers/articleAllSorted.controller'
 const { getAllComments } = require('./controllers/getAllComments.controller')
 const { postComments } = require('./controllers/postComments.controller')
 const { patchArticles } = require('./controllers/patchArticles')
+const { deleteComments } = require('./controllers/deleteComments')
 
 const app = express()
 app.use(express.json())
@@ -24,6 +25,10 @@ app.post('/api/articles/:article_id/comments', postComments)
 // app.patch
 
 app.patch('/api/articles/:article_id', patchArticles)
+
+// app.delete
+
+app.delete('api/comments/:comment_id', deleteComments)
 
 
 //not found

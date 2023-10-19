@@ -125,7 +125,8 @@ describe("app!!", ()=>{
 
           })
         })
-        test.only('should be able to patch articles by id',()=>{
+        //task 8
+        test('should be able to patch articles by id',()=>{
           const data = {
             inc_votes: 1
           }
@@ -135,6 +136,17 @@ describe("app!!", ()=>{
           .expect(201)
           .then((articles)=>{
            return articles.body
+          })
+        })
+
+        //taks 9
+        test.only('should be able to delete comments by id',()=>{
+          return request(app)
+          .delete('/api/comments/1')
+          .expect(204)
+          .then((response)=>{
+            return response
+            //response should be without the comment_id number comments
           })
         })
 })
