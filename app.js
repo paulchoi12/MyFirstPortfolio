@@ -9,7 +9,16 @@ const { postComments } = require('./controllers/postComments.controller')
 const { patchArticles } = require('./controllers/patchArticles')
 const { deleteComments } = require('./controllers/deleteComments')
 
+
+const cors = require('cors')
 const app = express()
+
+
+app.use(
+    cors({
+    origin: "http://localhost:5173",
+
+}))
 app.use(express.json())
 // app.get
 app.get('/api/topics', getAllTopics)
