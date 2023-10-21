@@ -28,7 +28,7 @@ app.patch('/api/articles/:article_id', patchArticles)
 
 // app.delete
 
-app.delete('api/comments/:comment_id', deleteComments)
+// app.delete('api/comments/:comment_id', deleteComments)
 
 
 //not found
