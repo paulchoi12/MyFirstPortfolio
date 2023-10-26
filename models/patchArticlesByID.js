@@ -4,7 +4,7 @@ exports.patchArticlesByID=(data, article_id)=>{
     console.log(data ,"from model")
 
     return db.query(`
-    UPDATE articles  SET votes = ${votes}
+    UPDATE articles  SET votes = votes + ${votes}
     WHERE article_id = ${article_id} RETURNING *;
     `)
     .then(({rows})=>{

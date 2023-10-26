@@ -126,16 +126,16 @@ describe("app!!", ()=>{
           })
         })
         //task 8
-        test('should be able to patch articles by id',()=>{
+        test.only('should be able to patch articles by id',()=>{
           const data = {
-            inc_votes: 1
+            inc_votes: 5
           }
           return request(app)
           .patch('/api/articles/1')
           .send(data)
           .expect(201)
           .then((articles)=>{
-           return articles.body
+          expect(articles.body.votes).toBe(105)
           })
         })
 
