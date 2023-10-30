@@ -109,7 +109,7 @@ describe("app!!", ()=>{
           })
         })
         //task 7
-        test('should be able to post comment on the selected article',()=>{
+        test.only('should be able to post comment on the selected article',()=>{
           const data = {
             username: "butter_bridge",
             body: "I approve this comment",
@@ -119,6 +119,7 @@ describe("app!!", ()=>{
           .send(data)
           .expect(201)
           .then((comments)=>{
+            console.log(comments.body);
           expect(comments.body).toHaveProperty("author", "butter_bridge")
           expect(comments.body).toHaveProperty("body", "I approve this comment")
           expect(comments.body).toHaveProperty("votes", 0)
@@ -126,7 +127,7 @@ describe("app!!", ()=>{
           })
         })
         //task 8
-        test.only('should be able to patch articles by id',()=>{
+        test('should be able to patch articles by id',()=>{
           const data = {
             inc_votes: 5
           }
